@@ -1,22 +1,49 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home(): JSX.Element {
+  const exercises = [
+    {
+      id: "1",
+      name: "Bench Press",
+      description: "benching, duh"
+    },
+    {
+      id: "2",
+      name: "Squat",
+      description: "squatting"
+    },
+    {
+      id: "3",
+      name: "Deadlift",
+      description: "deads"
+    },
+    {
+      id: "4",
+      name: "Overhead Press",
+      description: "press"
+    },
+    {
+      id: "5",
+      name: "Bicep Curls",
+      description: "curls"
+    }
+  ] as Exercise[];
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Open Weights</title>
+        <meta name="description" content="The easiest way to create and share weightlifting programs." />
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <h1 className={styles.title}>Welcome to Open Weights!</h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Easily create and share workouts.
         </p>
 
         <div className={styles.grid}>
@@ -62,4 +89,24 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+export interface Plan {
+  id: string;
+  activities: Activity[];
+  name: string;
+  description: string;
+  author: string;
+  tags: string[];
+}
+export interface Activity {
+  reps: number;
+  sets: number;
+  exercise: Exercise;
+}
+export interface Exercise {
+  id: string;
+  videoLink: string;
+  name: string;
+  description: string;
+  // Could do equipment required, area of focus, etc.
 }
