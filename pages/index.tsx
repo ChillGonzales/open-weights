@@ -1,34 +1,8 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 
 export default function Home(): JSX.Element {
-  const exercises = [
-    {
-      id: "1",
-      name: "Bench Press",
-      description: "benching, duh"
-    },
-    {
-      id: "2",
-      name: "Squat",
-      description: "squatting"
-    },
-    {
-      id: "3",
-      name: "Deadlift",
-      description: "deads"
-    },
-    {
-      id: "4",
-      name: "Overhead Press",
-      description: "press"
-    },
-    {
-      id: "5",
-      name: "Bicep Curls",
-      description: "curls"
-    }
-  ] as Exercise[];
   return (
     <div className="container">
       <Head>
@@ -48,8 +22,10 @@ export default function Home(): JSX.Element {
 
         <div className="row my-5">
           <div className="col">
-            <button className="btn btn-primary btn-lg mx-3">Create a Plan</button>
-            <button className="btn btn-secondary btn-lg mx-3">Learn More</button>
+            <Link href="/create-plan">
+              <a className="btn btn-primary btn-lg mr-3">Create a Plan</a>
+            </Link>
+            <button className="btn btn-secondary btn-lg ml-3">Learn More</button>
           </div>
         </div>
       </main>
@@ -65,24 +41,4 @@ export default function Home(): JSX.Element {
       </footer>
     </div>
   )
-}
-export interface Plan {
-  id: string;
-  activities: Activity[];
-  name: string;
-  description: string;
-  author: string;
-  tags: string[];
-}
-export interface Activity {
-  reps: number;
-  sets: number;
-  exercise: Exercise;
-}
-export interface Exercise {
-  id: string;
-  videoLink: string;
-  name: string;
-  description: string;
-  // Could do equipment required, area of focus, etc.
 }
